@@ -1,24 +1,76 @@
-# Compiled class file
-*.class
+# Diretórios de build
+.gradle/
+build/
+*/build/
+!gradle/wrapper/gradle-wrapper.jar
 
-# Log file
+# Arquivos do Android Studio
+.idea/
+*.iml
+.idea/caches
+.idea/libraries
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+.idea/misc.xml
+.idea/gradle.xml
+.idea/codeStyles/
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Configuração local
+local.properties
+
+# Arquivos temporários
 *.log
+*.tmp
+*.temp
+*.swp
 
-# BlueJ files
-*.ctxt
+# Arquivos do lint e cache
+lint/intermediates/
+lint/generated/
+lint/reports/
+lint/tmp/
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+# Arquivos Room (gerados)
+room.schemaLocation/
 
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
+# Capturas de tela do emulador
+captures/
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+# Arquivos de crash e ANRs
+*.stacktrace
+
+# Arquivos de execução
+*.apk
+*.ap_
+
+# Arquivos do NDK
+obj/
+
+# Arquivos de backup
+*.bak
+*.orig
+
+# Arquivos de lock do Gradle
+gradle-app.setting
+
+# Android Studio profiler
+.externalNativeBuild/
+.cxx/
+
+# Arquivos do Keystore
+*.jks
+*.keystore
+
+# Arquivos de configuração de usuários
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+
+# Arquivos de testes
+test-output/
