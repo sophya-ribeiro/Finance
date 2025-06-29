@@ -42,7 +42,16 @@
             android:layout_height="wrap_content"
             android:hint="E-mail"
             android:inputType="textEmailAddress" />
-        
+
+        <ImageView
+            android:id="@+id/imgFoto"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="16dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/outline_add_a_photo_24"
+            android:onClick="capturarImagem" />
 
         <Button
             android:id="@+id/btnLogin"

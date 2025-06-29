@@ -17,7 +17,7 @@ public class UserManager {
         this.userDao = db.userDao();
     }
 
-    public void registerUser(String username, String nome, String email, String password, RegistrationCallback callback) {
+    public void registerUser(String username, String nome, String email, String password, byte[] foto, RegistrationCallback callback) {
         new Thread(() -> {
             try {
                 if (userDao.getUserByUsername(username) != null) {
@@ -32,6 +32,7 @@ public class UserManager {
                 user.nome = nome;
                 user.email = email;
                 user.hashedPassword = hashed;
+                user.foto = foto;
 
                 userDao.insert(user);
                 callback.onRegistrationResult(true);
