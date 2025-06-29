@@ -37,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
     private ActivityResultLauncher<Uri> takePictureLauncher;
     private static final int CAMERA_PERMISSION_CODE = 100;
 
+    private ToggleButton toggleMode;
+    private Button btnRegister, btnLogin;
+    private Button btnSwitchMode;
+    private boolean isRegisterMode = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +57,36 @@ public class MainActivity extends AppCompatActivity {
         imgFoto = findViewById(R.id.imgFoto);
         imageUri = createUri();
         registerPictureLauncher();
+
+        btnRegister = findViewById(R.id.btnRegister);
+        btnLogin = findViewById(R.id.btnLogin);
+
+        btnRegister = findViewById(R.id.btnRegister);
+        btnLogin = findViewById(R.id.btnLogin);
+
+        btnSwitchMode = findViewById(R.id.btnSwitchMode);
+
+        btnSwitchMode.setOnClickListener(v -> {
+            isRegisterMode = !isRegisterMode;
+
+            if (isRegisterMode) {
+                // Modo cadastro
+                etNome.setVisibility(View.VISIBLE);
+                etEmail.setVisibility(View.VISIBLE);
+                imgFoto.setVisibility(View.VISIBLE);
+                btnRegister.setVisibility(View.VISIBLE);
+                btnLogin.setVisibility(View.GONE);
+                btnSwitchMode.setText("Já tenho uma conta");
+            } else {
+                // Modo login
+                etNome.setVisibility(View.GONE);
+                etEmail.setVisibility(View.GONE);
+                imgFoto.setVisibility(View.GONE);
+                btnRegister.setVisibility(View.GONE);
+                btnLogin.setVisibility(View.VISIBLE);
+                btnSwitchMode.setText("Criar nova conta");
+            }
+        });
 
         findViewById(R.id.btnRegister).setOnClickListener(v -> {
             String username = getText(etUsername);

@@ -34,14 +34,16 @@
             android:id="@+id/etNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nome completo" />
+            android:hint="Nome completo"
+            android:visibility="gone" />
 
         <EditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="E-mail"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:visibility="gone"/>
 
         <ImageView
             android:id="@+id/imgFoto"
@@ -51,7 +53,8 @@
             android:layout_margin="16dp"
             android:scaleType="centerCrop"
             android:src="@drawable/outline_add_a_photo_24"
-            android:onClick="capturarImagem" />
+            android:onClick="capturarImagem"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/btnLogin"
@@ -63,7 +66,16 @@
             android:id="@+id/btnRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Registrar" />
+            android:text="Registrar"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/btnSwitchMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Criar nova conta"
+            android:layout_marginBottom="12dp" />
+
 
         <TextView
             android:id="@+id/tvResult"
