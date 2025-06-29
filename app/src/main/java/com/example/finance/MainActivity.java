@@ -1,66 +1,73 @@
 package com.example.finance;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.view.Menu;
-
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.finance.databinding.ActivityMainBinding;
+import com.example.finance.data.User;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AppBarConfiguration mAppBarConfiguration;
-    private ActivityMainBinding binding;
+    private EditText etUsername, etPassword, etNome, etEmail;
+    private TextView tvResult;
+    private final String AES_KEY = "1234567890123456"; // chave de 16 bytes
+    private UserManager userManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        userManager = new UserManager(this);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        etUsername = findViewById(R.id.etUsername);
+        etPassword = findViewById(R.id.etPassword);
+        etNome = findViewById(R.id.etNome);
+        etEmail = findViewById(R.id.etEmail);
+        tvResult = findViewById(R.id.tvResult);
 
-        setSupportActionBar(binding.appBarMain.toolbar);
-        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null)
-                        .setAnchorView(R.id.fab).show();
+        findViewById(R.id.btnRegister).setOnClickListener(v -> {
+            String username = getText(etUsername);
+            String password = getText(etPassword);
+            String nome = getText(etNome);
+            String email = getText(etEmail);
+
+            if (username.isEmpty() || password.isEmpty() || nome.isEmpty() || email.isEmpty()) {
+                tvResult.setText("Todos os campos são obrigatórios.");
+                return;
             }
+
+            userManager.registerUser(username, nome, email, password, result -> runOnUiThread(() -> {
+                if (result) {
+                    tvResult.setText("Usuário registrado com sucesso.");
+                } else {
+                    tvResult.setText("Usuário já existe.");
+                }
+            }));
         });
-        DrawerLayout drawer = binding.drawerLayout;
-        NavigationView navigationView = binding.navView;
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
-                .setOpenableLayout(drawer)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+
+        findViewById(R.id.btnLogin).setOnClickListener(v -> {
+            String username = getText(etUsername);
+            String password = getText(etPassword);
+
+            if (username.isEmpty() || password.isEmpty()) {
+                tvResult.setText("Preencha usuário e senha.");
+                return;
+            }
+
+            userManager.loginUser(username, password, (success, user) -> runOnUiThread(() -> {
+                if (success) {
+                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    intent.putExtra("username", user.username);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    tvResult.setText("Usuário ou senha inválidos.");
+                }
+            }));
+        });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
+    private String getText(EditText et) {
+        return et.getText().toString().trim();
     }
 }
