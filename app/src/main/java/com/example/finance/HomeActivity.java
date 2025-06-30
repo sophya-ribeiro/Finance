@@ -17,8 +17,8 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.finance.data.User;
 import com.example.finance.databinding.ActivityHomeBinding;
+import com.example.finance.manager.UserManager;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 

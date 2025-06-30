@@ -7,7 +7,8 @@ import android.widget.*;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.finance.data.User;
+
+import com.example.finance.manager.UserManager;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
