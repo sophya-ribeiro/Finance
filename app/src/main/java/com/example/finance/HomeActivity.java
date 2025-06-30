@@ -44,14 +44,14 @@ public class HomeActivity extends AppCompatActivity {
                     View headerView = binding.navView.getHeaderView(0);
                     TextView tvName = headerView.findViewById(R.id.textViewName);
                     TextView tvEmail = headerView.findViewById(R.id.textViewEmail);
-                    //ImageView ivPhoto = headerView.findViewById(R.id.imageView);
+                    ImageView ivPhoto = headerView.findViewById(R.id.imageView);
 
                     tvName.setText(user.nome);
                     tvEmail.setText(user.email);
 
                     if (user.foto != null && user.foto.length > 0) {
                         Bitmap bitmap = BitmapFactory.decodeByteArray(user.foto, 0, user.foto.length);
-                        //ivPhoto.setImageBitmap(bitmap);
+                        ivPhoto.setImageBitmap(bitmap);
                     }
                 }
             }));
