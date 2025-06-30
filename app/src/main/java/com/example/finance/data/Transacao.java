@@ -46,5 +46,10 @@ public class Transacao {
 
     public long getData() { return data; }
     public void setData(long data) { this.data = data; }
+
+    public Transacao() {
+        // construtor vazio necessário para Room e para facilitar instância sem argumentos
+    }
+
 }
 
