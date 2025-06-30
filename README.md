@@ -1,6 +1,7 @@
 # 💸 Finance
 
 ## Alunos
+- Antonio Augusto Fernandes Oliveira Nantes
 - Luigi Almeida
 - Rafael Azevedo
 - Sophya Ribeiro
