@@ -19,8 +19,8 @@ public class Bank {
     @ColumnInfo(name = "user_id")
     public int userId;
 
-    @ColumnInfo(name = "balance")
-    public float balance;
+    // @ColumnInfo(name = "balance")
+    // public float balance;
 
     public Bank(String name, String type, int userId) {
         this.name = name;

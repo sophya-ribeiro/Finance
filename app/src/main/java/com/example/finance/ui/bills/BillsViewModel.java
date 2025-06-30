@@ -22,7 +22,6 @@ public class BillsViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<Transacao>> getTransacoesPorConta(long contaId) {
-        Log.d("BillsFragment", "Função chamada");
         return repository.listarTransacoesPorConta(contaId);
     }
 }
