@@ -19,6 +19,11 @@ public class BankRepository {
         bankDao = db.bankDao();
     }
 
+    public void update(Bank bank) {
+        bankDao.update(bank);
+    }
+
+
     public void insert(Bank bank) {
         bankDao.insert(bank);
     }

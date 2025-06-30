@@ -23,10 +23,16 @@ public interface BankDao {
     @Delete
     void delete(Bank bank);
 
+
     @Query("SELECT * FROM banks WHERE user_id = :userId")
     LiveData<List<Bank>> getBanksByUser(int userId);
 
     @Query("SELECT * FROM banks WHERE id = :id LIMIT 1")
     Bank getBankById(int id);
-}
 
+    @Query("SELECT * FROM banks")
+    LiveData<List<Bank>> getBanks();
+
+    @Query("UPDATE banks SET balance = :balance WHERE id = :bankId")
+    void updateBalance(int bankId, double balance);
+}

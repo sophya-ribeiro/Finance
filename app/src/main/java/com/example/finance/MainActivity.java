@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
 
         btnSwitchMode = findViewById(R.id.btnSwitchMode);
-
         btnSwitchMode.setOnClickListener(v -> {
             isRegisterMode = !isRegisterMode;
 

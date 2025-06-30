@@ -55,7 +55,7 @@ public class BankFragment extends Fragment {
                 return;
             }
 
-            Bank bank = new Bank(name, type, userId);
+            Bank bank = new Bank(name, type, userId, 0);
             bankViewModel.insert(bank);
 
             Toast.makeText(getContext(), getString(R.string.bank_saved_success), Toast.LENGTH_SHORT).show();
