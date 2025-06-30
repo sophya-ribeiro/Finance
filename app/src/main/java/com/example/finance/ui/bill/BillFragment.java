@@ -100,7 +100,6 @@ public class BillFragment extends Fragment {
                 billViewModel.insert(transacao);
                 Toast.makeText(getContext(), "Transação salva com sucesso", Toast.LENGTH_SHORT).show();
 
-                // Limpar campos após salvar (opcional)
                 editValor.setText("");
                 editDescricao.setText("");
                 radioGroupTipo.clearCheck();

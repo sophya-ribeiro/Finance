@@ -49,8 +49,8 @@ public class TransacaoAdapter extends RecyclerView.Adapter<TransacaoAdapter.View
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            titulo = itemView.findViewById(android.R.id.text1);
-            subtitulo = itemView.findViewById(android.R.id.text2);
+            titulo = itemView.findViewById(R.id.textTitulo);
+            subtitulo = itemView.findViewById(R.id.textSubtitulo);
         }
     }
 }
