@@ -32,5 +32,7 @@ public interface BankDao {
 
     @Query("SELECT * FROM banks")
     LiveData<List<Bank>> getBanks();
-}
 
+    @Query("UPDATE banks SET balance = :balance WHERE id = :bankId")
+    void updateBalance(int bankId, double balance);
+}
