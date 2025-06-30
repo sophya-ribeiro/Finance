@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    <navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/mobile_navigation"
+        app:startDestination="@+id/nav_bills">
 
-    <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.finance.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        <fragment
+            android:id="@+id/nav_bills"
+            android:name="com.example.finance.ui.home.HomeFragment"
+            android:label="@string/menu_bills"
+            tools:layout="@layout/fragment_bills" />
 
-    <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.finance.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        <fragment
+            android:id="@+id/nav_bill"
+            android:name="com.example.finance.ui.bill.BillFragment"
+            android:label="@string/menu_bill"
+            tools:layout="@layout/fragment_bill" />
 
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.finance.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-</navigation>
+        <fragment
+            android:id="@+id/nav_banks"
+            android:name="com.example.finance.ui.banks.BanksFragment"
+            android:label="@string/menu_banks"
+            tools:layout="@layout/fragment_banks" />
+
+        <fragment
+            android:id="@+id/nav_bank"
+            android:name="com.example.finance.ui.bank.BankFragment"
+            android:label="@string/menu_bank"
+            tools:layout="@layout/fragment_bank" />
+    </navigation>

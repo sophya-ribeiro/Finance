@@ -2,7 +2,6 @@ package com.example.finance;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,19 +14,21 @@ public class CadastroTransacaoActivity extends AppCompatActivity{
     private RadioGroup radioGroupTipo;
     private EditText editValor, editDescricao;
     private Button buttonSalvar;
-    private ContaDao contaDao;       // stub temporário
+    private BankDao bankDao;       // stub temporário
     private TransacaoDao transacaoDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro_transacao);
+        setContentView(R.layout.fragment_bill);
 
         spinnerContas = findViewById(R.id.spinnerContas);
         radioGroupTipo = findViewById(R.id.radioGroupTipo);
         editValor = findViewById(R.id.editValor);
         editDescricao = findViewById(R.id.editDescricao);
         buttonSalvar = findViewById(R.id.buttonSalvar);
+
+        Integer userId = getIntent().getIntExtra("userId", -1);
 
         // Banco real para transacoes
         AppDatabase db = AppDatabase.getInstance(getApplicationContext());
@@ -40,16 +41,16 @@ public class CadastroTransacaoActivity extends AppCompatActivity{
 
     private void carregarContas() {
         // Stub já é síncrono, lista mock
-        List<Conta> contas = contaDao.listarContas();
+        List<Bank> contas = bankDao.getBanks().getValue();
 
-        ArrayAdapter<Conta> adapter = new ArrayAdapter<>(this,
+        ArrayAdapter<Bank> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, contas);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerContas.setAdapter(adapter);
     }
 
     private void salvarTransacao() {
-        Conta contaSelecionada = (Conta) spinnerContas.getSelectedItem();
+        Bank contaSelecionada = (Bank) spinnerContas.getSelectedItem();
         if (contaSelecionada == null) {
             Toast.makeText(this, "Selecione uma conta", Toast.LENGTH_SHORT).show();
             return;

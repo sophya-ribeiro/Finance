@@ -5,7 +5,7 @@ import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "transacoes",
-        foreignKeys = @ForeignKey(entity = Conta.class,
+        foreignKeys = @ForeignKey(entity = Bank.class,
                 parentColumns = "id",
                 childColumns = "contaId",
                 onDelete = ForeignKey.CASCADE))

@@ -59,17 +59,15 @@ public class HomeActivity extends AppCompatActivity {
 
         setSupportActionBar(binding.appBarMain.toolbar);
 
-        binding.appBarMain.fab.setOnClickListener(view -> {
-            Snackbar.make(view, "Ação personalizada", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null)
-                    .setAnchorView(R.id.fab).show();
-        });
-
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                R.id.nav_bills,
+                R.id.nav_bill,
+                R.id.nav_banks,
+                R.id.nav_bank
+        )
                 .setOpenableLayout(drawer)
                 .build();
 
@@ -80,7 +78,6 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
