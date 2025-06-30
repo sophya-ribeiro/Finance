@@ -30,7 +30,6 @@ public class CadastroTransacaoActivity extends AppCompatActivity{
 
         Integer userId = getIntent().getIntExtra("userId", -1);
 
-        // Banco real para transacoes
         AppDatabase db = AppDatabase.getInstance(getApplicationContext());
         transacaoDao = db.transacaoDao();
 
