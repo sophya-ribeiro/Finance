@@ -1,9 +1,13 @@
 package com.example.finance;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +17,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.finance.data.User;
 import com.example.finance.databinding.ActivityHomeBinding;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -21,6 +26,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityHomeBinding binding;
+    private UserManager userManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +36,26 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         String username = getIntent().getStringExtra("username");
+        Integer userId = getIntent().getIntExtra("userId", -1);
+        userManager = new UserManager(this);
+        if (username != null) {
+            userManager.getUser(username, user -> runOnUiThread(() -> {
+                if (user != null) {
+                    View headerView = binding.navView.getHeaderView(0);
+                    TextView tvName = headerView.findViewById(R.id.textViewName);
+                    TextView tvEmail = headerView.findViewById(R.id.textViewEmail);
+                    ImageView ivPhoto = headerView.findViewById(R.id.imageView);
+
+                    tvName.setText(user.nome);
+                    tvEmail.setText(user.email);
+
+                    if (user.foto != null && user.foto.length > 0) {
+                        Bitmap bitmap = BitmapFactory.decodeByteArray(user.foto, 0, user.foto.length);
+                        ivPhoto.setImageBitmap(bitmap);
+                    }
+                }
+            }));
+        }
 
         setSupportActionBar(binding.appBarMain.toolbar);
 

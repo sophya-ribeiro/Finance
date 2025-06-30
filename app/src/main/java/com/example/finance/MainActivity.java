@@ -130,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
                 if (success) {
                     Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                     intent.putExtra("username", user.username);
+                    intent.putExtra("userId", user.id);
                     startActivity(intent);
                     finish();
                 } else {
